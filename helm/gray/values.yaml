@@ -1,0 +1,29 @@
+# Default values for gray.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+fluent-bit:
+    config:
+        inputs: |
+            [INPUT]
+                Name tail
+                Path /var/log/containers/logger*.log
+                multiline.parser docker, cri
+                Tag kube.*
+                Mem_Buf_Limit 5MB
+                Skip_Long_Lines On
+        outputs: |
+            [OUTPUT]
+                Name                    tcp
+                Match                   *
+                Host                    graylog_server_host
+                Port                    graylog_server_port
+                Format                  json_lines
+        customParsers: |
+            [PARSER]
+                Name docker
+                Format json
+                Time_Key timestamp
+                Time_Format %Y-%m-%d %H:%m:%s.%S%Z
+
+namespace: gray

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logger
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: logger
+      labels:
+        app: logger
+    spec:
+      containers:
+      - image: logging_graylog:latest
+        imagePullPolicy: IfNotPresent
+        name: logger
+        volumeMounts:
+        - mountPath: /var/log
+          name: logs
+      volumes:
+      - name: logs
+        hostPath:
+          path: /var/log
+          type: Directory
+  selector:
+    matchLabels:
+      app: logger

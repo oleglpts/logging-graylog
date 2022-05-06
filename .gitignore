@@ -1,0 +1,4 @@
+.idea/
+venv/
+/helm/gray/Chart.lock
+/helm/gray/charts/fluent-bit-0.20.0.tgz

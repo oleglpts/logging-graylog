@@ -1,0 +1,54 @@
+{
+  "extractors": [
+    {
+      "title": "JSON",
+      "extractor_type": "json",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "list_separator": ", ",
+        "kv_separator": "=",
+        "key_prefix": "",
+        "key_separator": "_",
+        "replace_key_whitespace": false,
+        "key_whitespace_replacement": "_"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "TIme",
+      "extractor_type": "regex_replace",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "timestamp",
+      "target_field": "timestamp",
+      "extractor_config": {
+        "replacement": " ",
+        "regex": "T"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Time1",
+      "extractor_type": "regex_replace",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "timestamp",
+      "target_field": "timestamp",
+      "extractor_config": {
+        "replacement": " ",
+        "regex": "\\+0000"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "4.2.8"
+}
