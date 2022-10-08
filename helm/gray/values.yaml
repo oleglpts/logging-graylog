@@ -1,6 +1,7 @@
 # Default values for gray.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+# See https://docs.fluentbit.io/manual/pipeline/outputs/tcp-and-tls
 
 fluent-bit:
     config:
@@ -19,6 +20,7 @@ fluent-bit:
                 Host                    graylog_server_host
                 Port                    graylog_server_port
                 Format                  json_lines
+                tls                     On
         customParsers: |
             [PARSER]
                 Name docker

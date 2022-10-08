@@ -14,5 +14,6 @@ Replace _Host_ and _Port_ parameters to your _Graylog_ server in _helm/values.ya
     $ cd docker
     $ ./build_minikube
     $ cd ../helm
+    $ helm repo add fluent https://fluent.github.io/helm-charts
     $ helm dependencies build gray
     $ helm install gray gray --namespace gray
